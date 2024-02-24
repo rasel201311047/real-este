@@ -13,6 +13,7 @@ const Home = () => {
             <Body></Body>
             <Feture></Feture>
             <Properties></Properties>
+            <Clientfrom></Clientfrom>
         </div>
         <Footer></Footer>
         </>

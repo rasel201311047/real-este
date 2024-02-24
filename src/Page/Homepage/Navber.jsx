@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/imageslide/logo.svg";
+import { Link } from "react-router-dom";
 const Navber = () => {
   return (
     <>
@@ -162,9 +163,9 @@ const Navber = () => {
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
-              <Button variant="btn btn-primary rounded-5 fw-bold ">
+              <Link className="btn btn-primary rounded-5 fw-bold " to={"/login"}>
                 Sign in
-              </Button>
+              </Link>
             </Form>
           </Navbar.Collapse>
         </Container>

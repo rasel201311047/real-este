@@ -7,6 +7,16 @@ const router = createBrowserRouter([
     {
       path: "/",
       element:<Home></Home>,
+      children:[
+        {
+
+        }
+      ]
+    },
+    {
+      path:"/login",
+      element:<Login></Login>,
+
     },
   ]);
   export default router;

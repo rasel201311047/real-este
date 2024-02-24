@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/imageslide/logo.svg";
 import { FcGoogle } from "react-icons/fc";
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.init";
 
 const Login = () => {
@@ -12,19 +12,38 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
+        console.log(user);
       })
       .catch((error) => {
         console.log("error", error.message);
       });
   };
 
-  const handleSubmit=(event)=>{
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event.target.value);
-  }
+  
+    const formData = new FormData(event.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+  
+  
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const userEmail = userCredential.user;
+          console.log(userEmail);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Firebase Error:", errorCode, errorMessage);
+        });
+        
+  };
+  
+  
   return (
     <>
-      <div>
+      <div className="text-center mt-4">
         <div>
           <img src={logo} alt="" style={{ width: "10rem" }} className="" />
         </div>
@@ -33,14 +52,11 @@ const Login = () => {
         </div>
       </div>
       <div className="d-flex justify-content-center">
-        <div className=" row col-12 col-md-5">
+        <div className=" row col-12 col-md-4">
           <div className="d-flex flex-column rounded-3  p-5 text-start box-component">
             <form className="d-flex flex-column" onSubmit={handleSubmit}>
               <label htmlFor="email">Email</label>
-              <input
-                style={{ outline: "none" }}
-                className="my-2"
-                type="email"
+              <input style={{ outline: "none" }} className="my-2" type="email"
                 id="email"
                 name="email"
                 placeholder="Username"
@@ -53,6 +69,7 @@ const Login = () => {
                 id="password"
                 name="password"
                 placeholder="Password"
+                autoComplete="current-password"
               />
               <Link to={"/"} className="my-2">
                 Forgotten password
@@ -61,6 +78,7 @@ const Login = () => {
                 style={{ outline: "none" }}
                 className="btn btn-primary my-2  p-1"
                 type="submit"
+                name="submit"
                 value="Sign in"
               />
             </form>
