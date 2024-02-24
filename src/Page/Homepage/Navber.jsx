@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -7,7 +7,18 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../../assets/imageslide/logo.svg";
 import { Link } from "react-router-dom";
+import { AuthContex } from "../../Provider/AuthProviders";
 const Navber = () => {
+  const {user,logOut}=useContext(AuthContex);
+  const handleSignOut=()=>{
+    logOut()
+    .then(result=>{
+      // alert("sign out successfully");
+    })
+    .catch(error=>{
+      console.log("error : ",error.message);
+    })
+  }
   return (
     <>
       <Navbar expand="lg" className="">
@@ -163,9 +174,11 @@ const Navber = () => {
               </NavDropdown>
             </Nav>
             <Form className="d-flex">
-              <Link className="btn btn-primary rounded-5 fw-bold " to={"/login"}>
-                Sign in
-              </Link>
+            {
+            user? <>
+            <button onClick={handleSignOut} className="btn btn-primary rounded-5 fw-bold " to={"/login"}>GO TO PLATFROM</button>
+            </>: <Link className="btn btn-primary rounded-5 fw-bold " to={"/login"}>Sign in</Link>
+             }
             </Form>
           </Navbar.Collapse>
         </Container>
@@ -175,3 +188,4 @@ const Navber = () => {
 };
 
 export default Navber;
+{/* <button className="btn btn-primary rounded-5 fw-bold " to={"/login"}>Sign in</button> */}

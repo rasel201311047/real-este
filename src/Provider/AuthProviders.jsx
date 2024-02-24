@@ -1,11 +1,12 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import app from '../firebase/firebase_config';
+import app from '../Firebase/firebase.init';
 const auth = getAuth(app);
 //contex create
 export const AuthContex=createContext(null);
 const AuthProviders = ({children}) => {
     const[user,setUser]=useState(null);
+   
 
     //registation
     const createUser=(email,password)=>{

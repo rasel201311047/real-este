@@ -1,7 +1,9 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { Link, useNavigate} from "react-router-dom";
+
 import logo from "../../assets/imageslide/logo.svg";
 import { FcGoogle } from "react-icons/fc";
+import { AuthContex } from "../../Provider/AuthProviders";
 import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.init";
 
@@ -9,16 +11,17 @@ const Login = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const handleGoogleSignin = () => {
+   
     signInWithPopup(auth, provider)
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        const GoogleUser = result.user;
+        
       })
       .catch((error) => {
         console.log("error", error.message);
       });
   };
-
+  const {user,signInUser,logOut}=useContext(AuthContex);
   const handleSubmit = (event) => {
     event.preventDefault();
   
@@ -26,17 +29,14 @@ const Login = () => {
     const email = formData.get("email");
     const password = formData.get("password");
   
-  
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const userEmail = userCredential.user;
-          console.log(userEmail);
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.error("Firebase Error:", errorCode, errorMessage);
-        });
+    signInUser(email,password)
+    .then(result=>{
+      const loginUse=result.user;
+       console.log(loginUse);
+    })
+    .catch(error=>{
+      console.log('Error : ',error.message);
+    })
         
   };
   
