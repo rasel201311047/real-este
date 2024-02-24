@@ -1,53 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { MdBed,MdOutlineBathtub } from "react-icons/md";
 
 const Properties = () => {
+  const [propertyData, setPropertyData]=useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('../../../public/data.json');
+        const data = await response.json();
+        const slicedData = data.property.slice(0, 8);
+        setPropertyData(slicedData);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  console.log(propertyData);
   return (
-    <div>
+    <div style={{fontFamily:'Roboto'}}>
       <div className="text-center">
         <h1>Featured Listings</h1>
         <p>A curated collection of our favorite properties</p>
       </div>
 
       <div className="d-flex gap-3 justify-content-center flex-wrap">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <Card.Text>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
-          </Card.Body>
-        </Card>
-
+        {
+          
+          propertyData.map(e=>(
+            <Card key={e.id} style={{ width: "18rem" }}>
+            <Card.Img variant="top" style={{height:"10rem"}} src={e.image}/>
+            <Card.Body className="text-start">
+              <Card.Title style={{height:"2rem"}} className=" fw-bold fs-3">$ {e.price}</Card.Title>
+              <Card.Text style={{height:"3rem"}} className="text-muted">
+                {e.address}
+              </Card.Text>
+              <div style={{height:"2rem"}} className="fs-5 text-muted">
+                <span><MdBed/></span>  <span> {e.beds} bd</span> <span className="my-2"><MdOutlineBathtub/></span> <span>{e.baths} ba</span>
+              </div>
+              <div className="mt-2">
+              <Link type="button" className="btn btn-outline-primary">View Listing</Link>
+              </div>
+            </Card.Body>
+          </Card> 
+          ))
+        }
       </div>
 
       <div className="mt-5">

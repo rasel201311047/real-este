@@ -11,6 +11,10 @@
   box-shadow: 2px 17px 22px -1px rgba(148,148,148,0.59);
 
 }
+.hovertext:hover {
+  border: 4px solid #0d6efd;
+}
+
 .b{
   color: #ffffff7e;
 }
