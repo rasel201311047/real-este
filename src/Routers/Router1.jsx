@@ -6,7 +6,7 @@ import Login from "../Page/Loginpage/Login";
 const router = createBrowserRouter([
     {
       path: "/",
-      element:<Login></Login>,
+      element:<Home></Home>,
     },
   ]);
   export default router;
