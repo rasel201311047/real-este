@@ -11,13 +11,13 @@ const Body = () => {
     }]
     
     return (
-        <div className='w-100 container rounded-3' style={{backgroundImage:`url(${im1})`,backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
+        <div className='w-100 container rounded-3 mt-4' style={{backgroundImage:`url(${im1})`,backgroundRepeat:'no-repeat',backgroundSize:'cover',fontFamily:'Roboto'}}>
             <Navber></Navber>
-           <div  className='d-md-flex flex-column flex-md-row align-items-center'>
+           <div  className='d-md-flex flex-column flex-md-row align-items-center pb-2'>
             <div className='my-5 col-md-6 p-3 d-flex justify-content-center'>
                 <div className='col-sm-8'>
-                <h1 className='mb-3 fs-1 '>{element[0].headcontaint}</h1>
-                <p className='fs-5'>{element[0].containparagrap}</p>
+                <h1 className='mb-3 fs-1 fw-bold'>{element[0].headcontaint}</h1>
+                <p className='fs-5 '>{element[0].containparagrap}</p>
                 </div>
 
             </div>
@@ -28,8 +28,10 @@ const Body = () => {
                 <button className='btn btn-dark text-white btn-outline-secondary btn-block mb-3 fw-bold'>{element[0].listofstart[3]}</button>
                 <Link className='text-decoration-none text-dark'>{element[0].listofstart[4]} </Link>
             </div>
+
             
            </div>
+
         </div>
     );
 };

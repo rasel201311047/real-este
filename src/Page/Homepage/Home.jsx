@@ -8,14 +8,15 @@ import Body from './Body';
 
 const Home = () => {
     return (
-        <div>
-            <Navber></Navber>
+        <>
+        <div className='root'>
             <Body></Body>
             <Feture></Feture>
             <Properties></Properties>
-            
-            <Footer></Footer>
         </div>
+        <Footer></Footer>
+        </>
+
     );
 };
 
