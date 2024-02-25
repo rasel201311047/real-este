@@ -9,3 +9,7 @@
     background-color: #0d6efd;
     color: white;
 }
+.fwnow:hover{
+    background-color: #0d6dfd53;
+    color: white !important;
+}

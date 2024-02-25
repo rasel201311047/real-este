@@ -2,6 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import { MdOutlineReceiptLong,MdFlag,MdOutlinePayments} from "react-icons/md";
 import { Link } from "react-router-dom";
+import '../../components/allcss.css'
 const Feture = () => {
   const element=[
     {
@@ -15,18 +16,18 @@ const Feture = () => {
     {
       id:2,
       icon:<MdOutlineReceiptLong/>,
-      headCon:'Get Started Today',
+      headCon:'Title & Escrow ',
       subcon:'Complete a quick form and let’s get started.',
       doWhat:'BEGIN NOW',
-      path:'/',
+      path:'/agencypage',
     },
     {
       id:3,
       icon:<MdFlag/>,
-      headCon:'Transaction Platfrom',
+      headCon:'Get Started Today',
       subcon:'Complete a quick form and let’s get started.',
       doWhat:'BEGIN NOW',
-      path:'/',
+      path:'/signup',
     },
   ]
   return (
@@ -40,7 +41,7 @@ const Feture = () => {
         {
           element.map(e=>(
             <Link key={e.id} className="text-decoration-none  border border-secondary rounded-2 " style={{boxShadow:' 41px 41px 82px #aaaaaa, -41px -41px 82px #ffffff'}} to={e.path}>
-            <Card className="border-0 h-100" style={{ width: "18rem" }}>
+            <Card className="border-0 h-100 fwnow " style={{ width: "18rem" }}>
             <Card.Body>
               <Card.Title style={{height:'3rem'}} className="fs-1 text-primary ">{e.icon}</Card.Title>
               <Card.Subtitle style={{height:'4rem'}} className="my-2 fs-3 fw-bold">

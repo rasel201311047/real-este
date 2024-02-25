@@ -23,7 +23,7 @@ const Navber = () => {
     <>
       <Navbar expand="lg" className="">
         <Container fluid className="ms-4 me-4 ">
-          <Navbar.Brand href="#" className="  ">
+          <Navbar.Brand href="/" className="  ">
             <img src={logo} className="" style={{ width: "8rem" }} alt="" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
@@ -41,7 +41,7 @@ const Navber = () => {
                 <div className="d-lg-flex px-2  ">
                   <div>
                     <li>
-                      <NavDropdown.Item href="#action/3.1">
+                      <NavDropdown.Item href="/agencypage">
                         Title & Escrow
                       </NavDropdown.Item>
                     </li>
@@ -88,7 +88,7 @@ const Navber = () => {
                 <div className="d-lg-flex px-2  ">
                   <div>
                     <li>
-                      <NavDropdown.Item href="#action/3.1">
+                      <NavDropdown.Item href="/agencypage">
                         Title & Escrow
                       </NavDropdown.Item>
                     </li>

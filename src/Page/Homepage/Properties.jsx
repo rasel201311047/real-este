@@ -35,7 +35,7 @@ const Properties = () => {
         {
           
           propertyData.map(e=>(
-            <Link to={`/`} key={e.id} className="text-decoration-none">
+            <Link to={`/proparty/${e.id}`} key={e.id} className="text-decoration-none">
             <Card  style={{ width: "18rem" }} className="proborder  rounded-3">
             <Card.Img variant="top" style={{height:"10rem"}} src={e.image}/>
             <Card.Body className="text-start">
@@ -47,7 +47,7 @@ const Properties = () => {
                 <span><MdBed/></span>  <span> {e.beds} bd</span> <span className="my-2"><MdOutlineBathtub/></span> <span>{e.baths} ba</span>
               </div>
               <div className="mt-2">
-              <Link type="button" className="btn btn-outline-primary testbnt">View Listing</Link>
+              <Link to={`/proparty/${e.id}`} type="button" className="btn btn-outline-primary testbnt">View Listing</Link>
               </div>
             </Card.Body>
           </Card> 
