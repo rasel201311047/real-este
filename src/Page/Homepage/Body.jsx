@@ -7,7 +7,7 @@ const Body = () => {
         
         headcontaint:'24/7 Real Estate Closings',
         containparagrap:'We leverage AI and blockchain technology for smooth and secure transactions',
-        listofstart:["Get Started","I'M AN AGENT","I'M AN AGENT","I'M A SELLER","I'M A  Buyer"],
+        listofstart:["Get Started","I'M AN BUYER","I'M AN AGENT","I'M A SELLER","I'M A  Buyer"],
     }]
     
     return (

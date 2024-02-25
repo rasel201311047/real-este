@@ -95,6 +95,7 @@ const Login = () => {
             <Link
               style={{}}
               className="text-center text-primary text-decoration-none mt-3"
+              to={'/signup'}
             >
               Create Account
             </Link>
