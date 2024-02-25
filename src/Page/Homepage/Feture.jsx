@@ -56,7 +56,7 @@ const Feture = () => {
           ))
         }
       </div>
-      <div className="text-center d-flex justify-content-center my-3">
+      <div className="text-center d-flex justify-content-center mt-5">
         <div className="w-50 px-2 py-2 rounded-4 bg-secondary text-black">Over $4 billion in transactions processed with Propy partners across the USA</div>
       </div>
     </div>
