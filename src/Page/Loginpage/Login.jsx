@@ -4,10 +4,11 @@ import { Link, useNavigate} from "react-router-dom";
 import logo from "../../assets/imageslide/logo.svg";
 import { FcGoogle } from "react-icons/fc";
 import { AuthContex } from "../../Provider/AuthProviders";
-import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, signInWithPopup } from "firebase/auth";
+import {  GoogleAuthProvider,  getAuth, signInWithPopup } from "firebase/auth";
 import app from "../../Firebase/firebase.init";
 
 const Login = () => {
+  const navigate=useNavigate();
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
   const handleGoogleSignin = () => {
@@ -15,16 +16,16 @@ const Login = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const GoogleUser = result.user;
+        navigate('/');
         
       })
       .catch((error) => {
         console.log("error", error.message);
       });
+      
   };
   const {user,signInUser,logOut}=useContext(AuthContex);
   const handleSubmit = (event) => {
-    event.preventDefault();
-  
     const formData = new FormData(event.target);
     const email = formData.get("email");
     const password = formData.get("password");
@@ -32,12 +33,12 @@ const Login = () => {
     signInUser(email,password)
     .then(result=>{
       const loginUse=result.user;
-       console.log(loginUse);
+      navigate('/');  
     })
     .catch(error=>{
       console.log('Error : ',error.message);
     })
-        
+    
   };
   
   

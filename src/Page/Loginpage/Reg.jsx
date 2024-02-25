@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import logo from '../../assets/imageslide/logo.svg'
 import { AuthContex } from '../../Provider/AuthProviders';
+import { useNavigate } from 'react-router-dom';
 const Reg = () => {
-    const {user,createUser,addUserName}=useContext(AuthContex);
+    const navigate =useNavigate();
+    const {user,createUser,logOut}=useContext(AuthContex);
     const handleSubmit=event=>{
-        event.preventDefault();
         const formData = new FormData(event.target);
         const name=formData.get("name");
         const email = formData.get("email");
@@ -23,9 +24,9 @@ const Reg = () => {
               console.log('error: ',error.message);
             })
 
-
-   
+            navigate('/login');
         }
+
 
     }
   
